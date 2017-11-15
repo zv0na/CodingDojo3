@@ -21,6 +21,34 @@
                 <Label Content="Überlauf Grauwasser" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
             </StackPanel>
         </Border>
+        <StackPanel Grid.Row="1">
+            <Label Content="Aktoren" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="20" Foreground="White"/>
+
+            <DataGrid Margin="10" MinHeight="300" AutoGenerateColumns="True"/>
+
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+                <Button Content="Hinzufügen" Margin="8,8,5,5" Height="50" FontSize="20" Background="Black" BorderBrush="White" Foreground="White"/>
+                <Button Content="Löschen" Margin="8,8,5,5" Height="50" FontSize="20" Background="Black" BorderBrush="White" Foreground="White"/>
+            </StackPanel>
+
+            <Label Content="Sensoren" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Foreground="White"/>
+
+            <DataGrid Margin="10" MinHeight="300" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID"/>
+                    <DataGridTextColumn Header="Name"/>
+                    <DataGridTextColumn Header="Description"/>
+                    <DataGridTextColumn Header="Room"/>
+                    <DataGridTemplateColumn Header="Mode" Width="90">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Mode}" Height="25"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
         <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20">...tbd...</Label>
         <Border Grid.RowSpan="2" Grid.Column="1" BorderThickness="1" BorderBrush="White">
             <Grid>

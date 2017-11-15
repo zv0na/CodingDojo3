@@ -8,6 +8,6 @@ namespace CodingDojo3.Converts
 {
     class StringToBrushConverter
     {
-        int x = 1;
+        
     }
 }
