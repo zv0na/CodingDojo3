@@ -42,14 +42,34 @@
                     <DataGridTemplateColumn Header="Mode" Width="90">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Content="{Binding Mode}" Height="25"/>
+                                <Label Height="25"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox Height="25"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="ValueType"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Ellipse Height="10" Width="10" Fill="Red"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Value"/>
+                    <DataGridTextColumn Header="PosX"/>
+                    <DataGridTextColumn Header="PosY"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+                <Button Content="Hinzufügen" Margin="8,8,5,5" Height="50" FontSize="20" Background="Black" BorderBrush="White" Foreground="White"/>
+                <Button Content="Löschen" Margin="8,8,5,5" Height="50" FontSize="20" Background="Black" BorderBrush="White" Foreground="White"/>
+            </StackPanel>
         </StackPanel>
-        <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20">...tbd...</Label>
+        
         <Border Grid.RowSpan="2" Grid.Column="1" BorderThickness="1" BorderBrush="White">
             <Grid>
                 <Grid.RowDefinitions>
