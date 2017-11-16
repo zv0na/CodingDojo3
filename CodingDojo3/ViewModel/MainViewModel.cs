@@ -5,6 +5,7 @@ using Simulation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Threading;
 
 namespace CodingDojo3.ViewModel
 {
@@ -50,9 +51,26 @@ namespace CodingDojo3.ViewModel
 
             }
 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 15);
+            timer.Tick += UpdateTime;
+
+            if (!IsInDesignMode)
+            {
+                LoadData();
+
+                timer.Start();
+            }
 
 
         }
+
+        private void UpdateTime(object sender, EventArgs e)
+        {
+            CurrentTime = DateTime.Now.ToLocalTime().ToShortTimeString();
+            CurrentDate = DateTime.Now.ToLocalTime().ToShortDateString();
+        }
+
         private void LoadData()
         {
             Simulator sim = new Simulator(modelList);
