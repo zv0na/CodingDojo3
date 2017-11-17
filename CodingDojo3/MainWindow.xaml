@@ -4,9 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodingDojo3"
-        xmlns:ViewModel="clr-namespace:CodingDojo3.ViewModel" x:Class="CodingDojo3.MainWindow"
+        xmlns:ViewModel="clr-namespace:CodingDojo3.ViewModel" xmlns:Converts="clr-namespace:CodingDojo3.Converts" x:Class="CodingDojo3.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="1050" Width="1680" Background="Black">
+    <Window.Resources>
+        <Converts:StringToBrushConverter x:Key="StringToBrushConverter"/>
+    </Window.Resources>
     <Window.DataContext>
         <ViewModel:MainViewModel/>
     </Window.DataContext>
@@ -51,7 +54,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                         <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate>
-                                <ComboBox Height="25"/>
+                                <ComboBox Height="25" SelectedItem="{Binding Mode, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding DataContext.ModeSelectionList, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
                     </DataGridTemplateColumn>
@@ -59,7 +62,7 @@
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Ellipse Height="10" Width="10" Fill="{Binding Mode}"/>
+                                <Ellipse Height="10" Width="10" Fill="{Binding Mode, Converter={StaticResource StringToBrushConverter}}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
